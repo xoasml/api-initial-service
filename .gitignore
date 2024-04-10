@@ -10,6 +10,7 @@ build/
 
 application-dev.properties
 application-local.properties
+gradle.properties
 
 ### STS ###
 .apt_generated
@@ -44,3 +45,4 @@ out/
 noticeAttachment
 Dockerfile
 entrypoint.sh
+/gradle.properties

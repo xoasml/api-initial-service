@@ -22,6 +22,41 @@ repositories {
 	mavenCentral()
 }
 
+jib {
+	from { /* BASE 이미지 */
+		image = 'miroit/openjdk-17-alpine-tzdata'
+	}
+	to {
+		image = 'docker.io/miroit/approval'
+
+		tags = ['latest', '0.0']
+		auth { /* 아이디 비밀번호 */
+			username = project.property('dockerUserName')
+			password = project.property('dockerPassWord')
+		}
+
+	}
+	container {
+		entrypoint = ['java', '-Dspring.profiles.active=dev', '-jar', project.name+'-'+project.version+'.jar']
+
+		jvmFlags = ['-Xms512m', '-Xmx512m', '-Xdebug', '-XshowSettings:vm', '-XX:+UnlockExperimentalVMOptions', '-XX:+UseContainerSupport']
+		ports = ['8087']
+
+
+		environment = [SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS"]
+		labels = [version: project.version, name: project.name, group: project.group]
+
+		creationTime = 'USE_CURRENT_TIMESTAMP'
+		format = 'Docker'
+	}
+	extraDirectories {
+		paths {
+			path {
+				from = file('build/libs')
+			}
+		}
+	}
+}
 
 dependencies {
 
