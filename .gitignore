@@ -8,6 +8,9 @@ build/
 *.log
 /logs
 
+application-dev.properties
+application-local.properties
+
 ### STS ###
 .apt_generated
 .classpath
