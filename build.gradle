@@ -113,7 +113,10 @@ dependencies {
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
 
 	// postgresql
-	implementation 'org.postgresql:postgresql:42.6.0'
+//	implementation 'org.postgresql:postgresql:42.6.0'
+
+	//mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	// RestTemplate PATCH, PUT method 사용 위해 추가
 	// https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
