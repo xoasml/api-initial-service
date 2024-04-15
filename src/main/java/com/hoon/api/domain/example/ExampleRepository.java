@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class ExampleRepository {
 
-
-
 }
