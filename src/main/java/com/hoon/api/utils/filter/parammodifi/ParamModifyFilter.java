@@ -29,12 +29,12 @@ public class ParamModifyFilter implements Filter {
             ParamModifyWrapper paramModifyWrapper = new ParamModifyWrapper(req);
 
             // local 환경에서는 user 를 tester, region 을 GIMPO 로 설정
-            if ("local".equals(profile)) { // 복호화가 필요 없는 경우의 add() 메소드 사용
+            if (!"prod".equals(profile)) { // 복호화가 필요 없는 경우의 add() 메소드 사용
                 paramModifyWrapper.add("user", cookieMap.get("user") == null ? "tester" : (String) cookieMap.get("user"));
                 paramModifyWrapper.add("region", cookieMap.get("region") == null ? "GIMPO" : (String) cookieMap.get("region"));
             }
 
-            if (!"local".equals(profile)) { // 복호화가 필요한 경우의 decodeAdd() 메소드 사용
+            if ("prod".equals(profile)) { // 복호화가 필요한 경우의 decodeAdd() 메소드 사용
                 paramModifyWrapper.decodeAdd("user", (String) cookieMap.get("user"));
                 paramModifyWrapper.add("region", (String) cookieMap.get("region"));
             }

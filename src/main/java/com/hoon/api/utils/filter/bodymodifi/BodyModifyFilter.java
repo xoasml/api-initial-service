@@ -35,12 +35,12 @@ public class BodyModifyFilter implements Filter {
             BodyModifyWrapper bodyModifyWrapper = new BodyModifyWrapper(req);
 
             // local 환경에서는 user : "tester", region : "GIMPO" 로 설정
-            if ("local".equals(profile)) { // 복호화가 필요 없는 경우의 add() 메소드 사용
+            if (!"prod".equals(profile)) { // 복호화가 필요 없는 경우의 add() 메소드 사용
                 bodyModifyWrapper.add("user", cookieMap.get("user") == null ? "tester" : cookieMap.get("user"));
                 bodyModifyWrapper.add("region", cookieMap.get("region") == null ? "GIMPO" : cookieMap.get("region"));
             }
 
-            if (!"local".equals(profile)) { // 복호화가 필요한 경우의 decodeAdd() 메소드 사용
+            if ("prod".equals(profile)) { // 복호화가 필요한 경우의 decodeAdd() 메소드 사용
                 bodyModifyWrapper.decodeAdd("user", (String) cookieMap.get("user"));
                 bodyModifyWrapper.add("region", cookieMap.get("region"));
             }
