@@ -33,7 +33,6 @@ jib {
         auth { /* 아이디 비밀번호 */
             username = project.property('dockerUserName')
             password = project.property('dockerPassWord')
-
         }
 
     }
@@ -41,7 +40,7 @@ jib {
         entrypoint = ['java', '-Dspring.profiles.active=dev', '-jar', project.name + '-' + project.version + '.jar']
 
         jvmFlags = ['-Xms512m', '-Xmx512m', '-Xdebug', '-XshowSettings:vm', '-XX:+UnlockExperimentalVMOptions', '-XX:+UseContainerSupport']
-        ports = ['8080']
+        ports = ['8081']
 
 
         environment = [SPRING_OUTPUT_ANSI_ENABLED: "ALWAYS"]
@@ -122,6 +121,13 @@ dependencies {
     //Redis
     implementation 'io.lettuce:lettuce-core:6.3.2.RELEASE'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.2.4'
+
+    //Prometheus
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    implementation 'org.springframework.boot:spring-boot-starter-actuator:3.2.4'
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+    implementation 'io.micrometer:micrometer-registry-prometheus:1.12.4'
+
 
     // RestTemplate PATCH, PUT method 사용 위해 추가
     // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
