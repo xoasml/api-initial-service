@@ -123,11 +123,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis:3.2.4'
 
     //Prometheus
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
     implementation 'org.springframework.boot:spring-boot-starter-actuator:3.2.4'
-    // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
     implementation 'io.micrometer:micrometer-registry-prometheus:1.12.4'
-
 
     // RestTemplate PATCH, PUT method 사용 위해 추가
     // https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
